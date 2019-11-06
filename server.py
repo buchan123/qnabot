@@ -56,4 +56,4 @@ table = {}
 iq = InferCoQA('model')
 print('done loading model ..')
 
-app.run(debug=True)
+app.run()
