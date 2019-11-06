@@ -52,9 +52,9 @@ def create_bot():
 	return SERVER+'/chat/'+bot_id
 
 
-# SERVER = "10.129.6.41:5000"
+
 table = {}
 iq = InferCoQA('model')
 print('done loading model ..')
 
-app.run(host='0.0.0.0', debug=True)
+app.run(debug=True)
