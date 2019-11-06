@@ -48,8 +48,7 @@ def create_bot():
 	context = request.form.get('context')
 	bot_im = request.form.get('bot_im_url')
 	table[bot_id] = {"context":context,"bot_name":bot_id,"im_url":bot_im}
-	SERVER = "http://0.0.0.0:5000"
-	return SERVER+'/chat/'+bot_id
+	return '/chat/'+bot_id
 
 
 
