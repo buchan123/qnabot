@@ -22,8 +22,8 @@ $(document).ready(function() {
 $(document).keypress(function(e) {
     if(e.which == 13) {
         var ms = {
-        username:'arijit',
-        name: 'Arijit',
+        username:'buchan123',
+        name: 'Buchan',
         avatar: 'https://bootdey.com/img/Content/avatar/avatar2.png',
         text: $("#msg").val(),
         ago : ''
