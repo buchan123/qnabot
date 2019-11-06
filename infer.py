@@ -96,8 +96,7 @@ class InferCoQA():
 		self.model_path = model_path
 		self.tokenizer = BertTokenizer.from_pretrained(model_path, do_lower_case=lower_case)
 		self.model = BertForQuestionAnswering.from_pretrained(model_path)
-		self.device = torch.device("cpu")
-		self.device1 = torch.device("cuda")
+		self.device = torch.device("cuda")
 		self.model.to(self.device)
 		self.model.eval()
 
@@ -116,9 +115,9 @@ class InferCoQA():
 		coqa_dataloader = DataLoader(coqa_data, sampler=coqa_sampler, batch_size=1)
 		all_results = []
 		for input_ids, input_mask, segment_ids, example_indices in coqa_dataloader:
-			input_ids = input_ids.to(self.device1)
-			input_mask = input_mask.to(self.device1)
-			segment_ids = segment_ids.to(self.device1)
+			input_ids = input_ids.to(self.device)
+			input_mask = input_mask.to(self.device)
+			segment_ids = segment_ids.to(self.device)
 
 			
 			with torch.no_grad():
