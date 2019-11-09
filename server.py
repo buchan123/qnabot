@@ -20,7 +20,7 @@ def serve_static(filename):
     return send_from_directory(os.path.join(root_dir, 'static'),   filename)
 
 @app.route('/',methods=['GET', 'POST'])
-def home(bot_id):
+def home(bot_id = 'GECBSP'):
 	if bot_id not in table:
 		create_bot()
 	if request.method == 'POST':
