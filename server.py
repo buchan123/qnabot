@@ -50,4 +50,4 @@ def create_bot():
 table = {}
 iq = InferCoQA('model')
 
-app.run(debug=True)
+app.run()
