@@ -43,7 +43,7 @@ $(document).keypress(function(e) {
         $( "div#chat-messages" ).append(htmldiv);
         $("#chat-messages").animate({ scrollTop: $('#chat-messages').prop("scrollHeight")}, 1000);
         
-        $.post("/chat/"+$("#bot_id").text(),{"ques":$("#msg").val(),"prev_q":prev_q,"prev_a":prev_a},function(data, status){
+        $.post("/",{"ques":$("#msg").val(),"prev_q":prev_q,"prev_a":prev_a},function(data, status){
           prev_a = data;
           prev_q = $("#msg").val();
           var ms = {
