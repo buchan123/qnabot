@@ -22,8 +22,8 @@ $(document).ready(function() {
 $(document).keypress(function(e) {
     if(e.which == 13) {
         var ms = {
-        username:'buchan123',
-        name: 'Buchan',
+        username:'arijit',
+        name: 'Arijit',
         avatar: 'https://bootdey.com/img/Content/avatar/avatar2.png',
         text: $("#msg").val(),
         ago : ''
@@ -43,7 +43,7 @@ $(document).keypress(function(e) {
         $( "div#chat-messages" ).append(htmldiv);
         $("#chat-messages").animate({ scrollTop: $('#chat-messages').prop("scrollHeight")}, 1000);
         
-        $.post("/",{"ques":$("#msg").val(),"prev_q":prev_q,"prev_a":prev_a},function(data, status){
+        $.post("/chat/"+$("#bot_id").text(),{"ques":$("#msg").val(),"prev_q":prev_q,"prev_a":prev_a},function(data, status){
           prev_a = data;
           prev_q = $("#msg").val();
           var ms = {
