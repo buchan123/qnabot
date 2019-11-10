@@ -6,7 +6,6 @@ html, body {
 #center-text {          
   display: flex;
   flex: 1;
-  background: #efefef;
   flex-direction:column; 
   justify-content: center;
   align-items: center;  
