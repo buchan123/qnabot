@@ -1,51 +1,30 @@
-function formatAMPM(date) {
-  var hours = date.getHours();
-  var minutes = date.getMinutes();
-  var ampm = hours >= 12 ? 'PM' : 'AM';
-  hours = hours % 12;
-  hours = hours ? hours : 12; // the hour '0' should be '12'
-  minutes = minutes < 10 ? '0'+minutes : minutes;
-  var strTime = hours + ':' + minutes + ' ' + ampm;
-  return strTime;
-}
-
 var prev_q = "";
 var prev_a = "";
-var bot_id = "";
-var bot_im_url = "";
 
-$(document).ready(function() {
-  bot_id = $('#bot_id').text();
-  bot_im_url = $('#bot_im_url').text();
-});
+$(function() {
+  var INDEX = 0; 
+  $("#chat-submit").click(function(e) {
+    e.preventDefault();
+    var msg = $("#chat-input").val(); 
+    if(msg.trim() == ''){
+      return false;
+    }
+    generate_message(msg, 'self');
+    var buttons = [
+        {
+          name: 'Existing User',
+          value: 'existing'
+        },
+        {
+          name: 'New User',
+          value: 'new'
+        }
+      ];
 
-$(document).keypress(function(e) {
-    if(e.which == 13) {
-        var ms = {
-        username:'buchan123',
-        name: 'Buchan',
-        avatar: 'https://bootdey.com/img/Content/avatar/avatar2.png',
-        text: $("#msg").val(),
-        ago : ''
-        };
-        position = 'right';
-        htmldiv = `<div class="answer ${position}">
-                    <div class="avatar">
-                      <img src="${ms.avatar}" alt="${ms.name}">
-                      <div class="status online"></div>
-                    </div>
-                    <div class="text">
-                      ${ms.text}
-                    </div>
-                    <div class="time">`+formatAMPM(new Date)+`</div>
-                  </div>`;
-
-        $( "div#chat-messages" ).append(htmldiv);
-        $("#chat-messages").animate({ scrollTop: $('#chat-messages').prop("scrollHeight")}, 1000);
-        
-        $.post("/",{"ques":$("#msg").val(),"prev_q":prev_q,"prev_a":prev_a},function(data, status){
+    setTimeout(function() { 
+      $.post("/",{"ques":msg,"prev_q":prev_q,"prev_a":prev_a},function(data, status){
           prev_a = data;
-          prev_q = $("#msg").val();
+          prev_q = msg;
           var ms = {
           username:'bot',
           name: '$("#bot_id").text()',
@@ -53,24 +32,53 @@ $(document).keypress(function(e) {
           text: prev_a,
           ago : ''
           };
-          position = 'left';
-          htmldiv = `<div class="answer ${position}">
-                      <div class="avatar">
-                        <img src="${ms.avatar}" alt="${ms.name}">
-                        <div class="status online"></div>
-                      </div>
-                      <div class="text">
-                        ${ms.text}
-                      </div>
-                      <div class="time">`+formatAMPM(new Date)+`</div>
-                    </div>`;
-
-          $( "div#chat-messages" ).append(htmldiv);
-          $("#chat-messages").animate({ scrollTop: $('#chat-messages').prop("scrollHeight")}, 1000);
+        generate_message(${ms.text}, 'user');  
           
-          $("#msg").val("");
-        });
+        });  
+     
+    }, 1000)
+    
+  })
+  
+  function generate_message(msg, type) {
+    INDEX++;
+    
+    var str="";
+    str += "<div id='cm-msg-"+INDEX+"' class=\"chat-msg "+type+"\">";
+    str += "          <span class=\"msg-avatar\">";
+    str += "            <img src=\"https:\/\/image.crisp.im\/avatar\/operator\/196af8cc-f6ad-4ef7-afd1-c45d5231387c\/240\/?1483361727745\">";
+    str += "          <\/span>";
+    str += "          <div class=\"cm-msg-text\">";
+    str += msg;
+    str += "          <\/div>";
+    str += "        <\/div>";
+    
 
-    }
+    $(".chat-logs").append(str);
+    $("#cm-msg-"+INDEX).hide().fadeIn(300);
+    if(type == 'self'){
+     $("#chat-input").val(''); 
+    }    
+    $(".chat-logs").stop().animate({ scrollTop: $(".chat-logs")[0].scrollHeight}, 1000);    
+  }  
+  
 
-});
+  
+  $(document).delegate(".chat-btn", "click", function() {
+    var value = $(this).attr("chat-value");
+    var name = $(this).html();
+    $("#chat-input").attr("disabled", false);
+    generate_message(name, 'self');
+  })
+  
+  $("#chat-circle").click(function() {    
+    $("#chat-circle").toggle('scale');
+    $(".chat-box").toggle('scale');
+  })
+  
+  $(".chat-box-toggle").click(function() {
+    $("#chat-circle").toggle('scale');
+    $(".chat-box").toggle('scale');
+  })
+  
+})
