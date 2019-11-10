@@ -37,7 +37,7 @@ def home(bot_id = 'GECBSP'):
 			bot_im = ""
 		else:
 			bot_im = table[bot_id]["im_url"]
-		return render_template('chat.html',bot=bot_id,bot_im=bot_im)
+		return render_template('index.html',bot=bot_id,bot_im=bot_im)
 
 def create_bot():
 	file = open("knowledgebase.txt","r")
