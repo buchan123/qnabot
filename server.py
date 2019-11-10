@@ -41,7 +41,7 @@ def home(bot_id = 'GECBSP'):
 
 def create_bot():
 	file = open("knowledgebase.txt","r")
-	bot_id = "GECBSP"
+	bot_id = "Government Engineering College Bilaspur"
 	context = file.read()
 	bot_im = "https://cdn.mee6.xyz/assets/logo.png"
 	table[bot_id] = {"context":context,"bot_name":bot_id,"im_url":bot_im}
