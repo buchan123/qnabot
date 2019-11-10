@@ -5,13 +5,15 @@ html, body {
 }
 #center-text {          
   display: flex;
-  
+  background : white;
   flex: 1;
   flex-direction:column; 
   justify-content: center;
   align-items: center;  
   height:50%;
   width : 50%;
+  bottom: 50%;
+  right: 50%;
   
 }
 #chat-circle {
