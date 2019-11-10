@@ -6,12 +6,12 @@ html, body {
 #center-text {          
     display: inline-block;
     position: fixed;
-    top: 0;
+    top: 50px;
     bottom: 0;
     left: 0;
     right: 0;
     width: 50%;
-    height: 70%;
+    height: 50%;
     margin: auto;
     background : #efefef;
   
