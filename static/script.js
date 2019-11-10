@@ -31,7 +31,7 @@ $(function() {
           };
           answer = ms.text
           
-      generate_message(answer, 'user',"https://cdn.mee6.xyz/assets/logo.png");  
+      generate_message(answer, 'user',"<img src='https://cdn.mee6.xyz/assets/logo.png'>");  
         });
 
     }, 1000)
