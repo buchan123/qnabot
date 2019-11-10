@@ -31,9 +31,9 @@ $(function() {
           };
           answer = ms.text
           
+      generate_message(answer, 'user');  
         });
 
-      generate_message(answer, 'user');  
     }, 1000)
     
   })
