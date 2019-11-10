@@ -1,6 +1,5 @@
 var prev_q = "";
 var prev_a = "";
-var answer = "";
 $(function() {
   var INDEX = 0; 
   $("#chat-submit").click(function(e) {
