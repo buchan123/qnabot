@@ -1,9 +1,10 @@
+import flask
 from flask import Flask, request, render_template
 from flask import send_file,session,jsonify
 import string
 import random
 from infer import *
-from flask_ngrok import run_with_ngrok
+
 
 
 
@@ -12,7 +13,6 @@ def id_generator(size=4, chars=string.ascii_lowercase):
 
 app = Flask(__name__,template_folder='static')
 
-run_with_ngrok(app)
 
 @app.route('/static/<path:filename>')
 def serve_static(filename):
