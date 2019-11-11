@@ -29,7 +29,7 @@ def home(bot_id = 'Government Engineering College Bilaspur'):
 			question = request.form.get('ques');
 			prev_q = request.form.get('prev_q');
 			prev_a = request.form.get('prev_a');
-			answer = 'Hi'#iq.predict(context,question,prev_q,prev_a)			
+			answer = "Hi"#iq.predict(context,question,prev_q,prev_a)			
 			return answer
 	if request.method == 'GET':
 		if bot_id not in table:
