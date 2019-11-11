@@ -49,5 +49,6 @@ def create_bot():
 
 table = {}
 #iq = InferCoQA('model')
+if __name__ == '__main__':
+    app.run()
 
-app.run()
